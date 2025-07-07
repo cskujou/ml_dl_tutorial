@@ -181,6 +181,7 @@ class ImageFolderDataset:
         shuffle: bool | None = None,
         num_workers: int = 0,
         pin_memory: bool = False,
+        cache_transformed: bool = False,
         **dataloader_kwargs,
     ):
         dataset = ImageSplitDataset(
@@ -190,6 +191,7 @@ class ImageFolderDataset:
             transform=transform,
             transform_on_the_fly=transform_on_the_fly,
             persistent=persistent,
+            cache_transformed=cache_transformed,
         )
         return DataLoader(
             dataset,

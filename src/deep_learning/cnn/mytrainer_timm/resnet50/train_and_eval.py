@@ -47,7 +47,7 @@ if __name__ == "__main__":
     config = TrainConfig.load_file(Path(__file__).parent / "config.yaml", override_with_args=True)
 
     # 数据预处理和加载
-    dataset = ImageFolderDataset(Path("dataset") / "PlantDoc-Dataset", splits="train")
+    dataset = ImageFolderDataset(Path("dataset") / "PlantDoc-Dataset", splits=["train", "test"])
     dataset.split(children=["train", "val"], ratios=[0.8, 0.2], parent="train", shuffle=True)
     model = PlantDocClassifier(num_classes=dataset.num_classes())
 
